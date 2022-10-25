@@ -1,3 +1,4 @@
+import DepositList from "./components/deposits/DepositList";
 import Header from "./components/layout/Header";
 import RoundList from "./components/rounds/RoundList";
 import WidgetGroup from "./components/widgets/WidgetGroup";
@@ -9,6 +10,7 @@ export default function Home() {
         <Header />
         <WidgetGroup />
         <RoundList />
+        <DepositList />
       </div>
     </div>
   );

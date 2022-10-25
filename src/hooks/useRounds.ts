@@ -2,7 +2,7 @@ import { BigNumber, ethers } from "ethers"
 import { IRound } from "../types/rounds"
 
 
-export default function useWidgets() {
+export default function useRounds() {
 
     const rounds: IRound[] = [
         { index: BigNumber.from(0), startTime: BigNumber.from(1666692000), endTime: BigNumber.from(1674468000), duration: BigNumber.from(7776000), amountAllocated: ethers.utils.parseEther("25"), amountClaimed: BigNumber.from(0) },
