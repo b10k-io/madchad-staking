@@ -1,4 +1,5 @@
 import Header from "./components/layout/Header";
+import RoundList from "./components/rounds/RoundList";
 import WidgetGroup from "./components/widgets/WidgetGroup";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
       <div className="flex flex-col gap-16">
         <Header />
         <WidgetGroup />
+        <RoundList />
       </div>
     </div>
   );

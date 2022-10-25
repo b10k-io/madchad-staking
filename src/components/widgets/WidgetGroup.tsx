@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import useWidgets from "../../hooks/useWidgets"
 import { IWidget } from "../../types/widgets"
 import Container from "../layout/Container"
@@ -7,10 +6,6 @@ import Widget from "./Widget"
 export default function WidgetGroup() {
 
     const widgets: IWidget[] = useWidgets()
-
-    useEffect(() => {
-        console.log(widgets)
-    }, [widgets])
 
     return (
         <Container>
