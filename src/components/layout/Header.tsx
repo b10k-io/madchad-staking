@@ -1,5 +1,6 @@
 import { ConnectWallet } from "@thirdweb-dev/react"
 import logo from "../../assets/logo.png"
+import DepositButton from "../deposits/DepositButton"
 import Container from "./Container"
 
 export default function Header() {
@@ -10,7 +11,10 @@ export default function Header() {
                     <img src={logo} className="h-16" alt="MadChad" />
                     <h2 className="text-xl font-bold uppercase text-slate-100">Rewards</h2>
                 </div>
-                <div>
+                <div className="flex gap-4 items-center">
+                    <div>
+                    <DepositButton />
+                    </div>
                     <ConnectWallet />
                 </div>
             </div>

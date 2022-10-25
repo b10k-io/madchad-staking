@@ -18,7 +18,10 @@ export default function DepositList() {
                     <div className="flex justify-between items-center">
                         <h2 className="text-xl text-slate-900 font-bold uppercase">Deposits</h2>
                         <div className="flex items-center gap-2">
-                            <span className="text-xs uppercase font-semibold text-slate-400">Balance: 1,000,000</span>
+                            <div className="flex divide-x divide-solid">
+                                <span className="px-2 text-xs uppercase font-semibold text-slate-400">Balance: 1,000,000</span>
+                                <span className="px-2 text-xs uppercase font-semibold text-slate-400">Deposited: 40,000</span>
+                            </div>
                             <DepositButton />
                             <WithdrawAllButton />
                         </div>

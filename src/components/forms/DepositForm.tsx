@@ -6,14 +6,13 @@ type Inputs = {
 };
 
 export default function DepositForm() {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
+  const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
 
   function setMax() {}
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
 
         <div className="flex justify-between items-center text-xs font-semibold text-slate-400 uppercase">
             <label>Amount</label>
@@ -33,6 +32,8 @@ export default function DepositForm() {
                 <span>Deposit</span>
             </div>
         </button>
+
+        <p className="text-justify text-xs text-slate-600">By depositing tokens, you become eligable to receive BNB rewards. You may withdraw the deposit at anytime, but you will be charged a 20% fee if you withdraw within 20 days of your deposit. The project reserves the right to adjust the rate and duration up to a maximum of 25% and 30 days.</p>
       
     </form>
   );
