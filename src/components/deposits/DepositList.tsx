@@ -1,15 +1,25 @@
-import useDeposits from "../../hooks/useDeposits"
-import { IDeposit } from "../../types/deposits"
+import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react"
 import Container from "../layout/Container"
-import Deposit from "./Deposit"
+import Deposit, { LoadingDeposit } from "./Deposit"
 import DepositButton from "./DepositButton"
 import WithdrawAllButton from "./WithdrawAllButton"
+import ERC20Staking from "../../abi/ERC20Staking.json"
+import ERC20 from "../../abi/ERC20.json"
+import { BigNumber } from "ethers"
+import { contractAddress } from "../../constants"
+import { formatCommify } from "../../support/formatters"
 
 const tdClass = "text-xs font-semibold uppercase text-slate-400 first:text-left text-right py-2 border-b"
 
 export default function DepositList() {
 
-    const deposits: IDeposit[] = useDeposits()
+    const address = useAddress()
+    const { contract } = useContract(contractAddress, ERC20Staking.abi)
+    const { data: tokenAddress } = useContractRead(contract, "token");
+    const { contract: token } = useContract(tokenAddress, ERC20.abi)
+    const { data: depositIndexesByAddress } = useContractRead(contract, "depositIndexesByAddress", address);
+    const { data: deposited } = useContractRead(contract, "balanceOf", address);
+    const { data: balanceOf } = useContractRead(token, "balanceOf", address);
 
     return (
         <Container>
@@ -19,8 +29,8 @@ export default function DepositList() {
                         <h2 className="text-xl text-slate-900 font-bold uppercase">Deposits</h2>
                         <div className="flex items-center gap-2">
                             <div className="flex divide-x divide-solid">
-                                <span className="px-2 text-xs uppercase font-semibold text-slate-400">Balance: 1,000,000</span>
-                                <span className="px-2 text-xs uppercase font-semibold text-slate-400">Deposited: 40,000</span>
+                                <span className="px-2 text-xs uppercase font-semibold text-slate-400">Balance: {formatCommify(balanceOf)}</span>
+                                <span className="px-2 text-xs uppercase font-semibold text-slate-400">Deposited: {formatCommify(deposited)}</span>
                             </div>
                             <DepositButton />
                             <WithdrawAllButton />
@@ -37,7 +47,7 @@ export default function DepositList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {deposits?.map((deposit, key) => <Deposit {...deposit} key={key} />)}
+                            {depositIndexesByAddress?.map((index: BigNumber, key: number) => <Deposit index={index.toNumber()} key={key} />)}
                         </tbody>
                     </table>
                 </div>

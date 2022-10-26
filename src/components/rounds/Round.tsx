@@ -7,7 +7,7 @@ import ERC20Staking from "../../abi/ERC20Staking.json"
 import { formatBalance, formatCountdown } from "../../support/formatters";
 import { useState, useEffect } from "react";
 
-export const tdClass = "px-2 py-2 text-sm text-slate-900 first:text-left text-right"
+export const tdClass = "p-2 text-sm text-slate-900 first:text-left text-right"
 
 export function LoadingRow() {
     return (

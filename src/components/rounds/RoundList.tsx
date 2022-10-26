@@ -43,7 +43,11 @@ export default function RoundList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {indexArray.length > 0 ? indexArray?.map((index, key) => <Round index={index} key={key} />) : <LoadingRow />}
+                            {indexArray.length > 0 ? indexArray?.map((index, key) => <Round index={index} key={key} />) : <>
+                                <LoadingRow />
+                                <LoadingRow />
+                                <LoadingRow />
+                            </>}
                         </tbody>
                     </table>
                 </div>
