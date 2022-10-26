@@ -11,3 +11,7 @@ export interface IDialogWrapper extends IDialog {
 export interface IDepositDialog extends IDialog {
     // 
 }
+
+export interface IClaimDialog extends IDialog {
+    roundIndex: number
+}

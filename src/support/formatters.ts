@@ -27,11 +27,11 @@ export function formatCountdown(round: any): string {
     if (endTime < Date.now()) return "Ended"
     const duration = endTime - Date.now()
     let options: HumanizerOptions = { round: true }
-    if (duration < 60) {
+    if (duration < 60*1000) {
         options = { ...options, units: ["s"] }
-    } else if (duration < 60*1000) {
-        options = { ...options, units: ["m"] }
     } else if (duration < 60*60*1000) {
+        options = { ...options, units: ["m"] }
+    } else if (duration < 24*60*60*1000) {
         options = { ...options, units: ["h"] }
     } else {
         options = { ...options, units: ["d"] }

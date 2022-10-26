@@ -1,7 +1,5 @@
 import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
-import { ethers } from "ethers";
 import moment from "moment"
-import Countdown from "react-countdown"
 import { contractAddress } from "../../constants";
 import Loading from "../layout/Loading";
 import ClaimButton from "./ClaimButton";
