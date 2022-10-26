@@ -11,7 +11,7 @@ const tdClass = "px-2 text-xs font-semibold uppercase text-slate-400 first:text-
 export default function RoundList() {
 
     const { contract } = useContract(contractAddress, ERC20Staking.abi)
-    const { data: nbRounds, isLoading: isLoadingNbRounds } = useContractRead(contract, "nbRounds");
+    const { data: nbRounds } = useContractRead(contract, "nbRounds");
 
     const [indexArray, setIndexArray] = useState<number[]>([])
 

@@ -38,11 +38,3 @@ export function formatCountdown(round: any): string {
     }
     return humanizeDuration(duration, options)
 }
-
-export function formatStaked(num: any, den: any): string {
-    if (!(num instanceof BigNumber)) return ""
-    if (!(den instanceof BigNumber)) return ""
-    num = formatBalance(num)
-    den = formatBalance(den)
-    return `${num}/${den}`
-}

@@ -1,8 +1,7 @@
 import { Dialog } from '@headlessui/react'
-import { IClaimDialog, IDepositDialog } from '../../types/dialogs'
+import { IClaimDialog } from '../../types/dialogs'
 import DialogWrapper from './DialogWrapper'
 import { FaTimes } from "react-icons/fa"
-import DepositForm from '../forms/DepositForm'
 
 export default function ClaimDialog({ roundIndex, isOpen, openModal, closeModal }: IClaimDialog) {
 

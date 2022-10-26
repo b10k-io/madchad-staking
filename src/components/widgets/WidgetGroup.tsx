@@ -1,6 +1,5 @@
 import useWidgets from "../../hooks/useWidgets"
 import { formatBalance, formatPercentage } from "../../support/formatters"
-import { IWidget } from "../../types/widgets"
 import Container from "../layout/Container"
 import BasicWidget from "./BasicWidget"
 import CountdownWidget from "./CountdownWidget"
