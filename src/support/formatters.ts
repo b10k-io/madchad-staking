@@ -38,3 +38,24 @@ export function formatCountdown(round: any): string {
     }
     return humanizeDuration(duration, options)
 }
+
+export function formatCommify(nb: any): string {
+    if (!(nb instanceof BigNumber)) return ""
+    nb = ethers.utils.formatEther(nb)
+    return ethers.utils.commify(nb)
+}
+
+export function formatDuration(nb: BigNumber): string {
+    const duration: number = nb.toNumber() * 1000
+    let options: HumanizerOptions = { round: true }
+    if (duration < 60*1000) {
+        options = { ...options, units: ["s"] }
+    } else if (duration < 60*60*1000) {
+        options = { ...options, units: ["m"] }
+    } else if (duration < 24*60*60*1000) {
+        options = { ...options, units: ["h"] }
+    } else {
+        options = { ...options, units: ["d"] }
+    }
+    return humanizeDuration(duration, options)
+}
