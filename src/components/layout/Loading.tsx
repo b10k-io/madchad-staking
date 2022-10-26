@@ -1,3 +1,7 @@
-export default function Loading() {
-    return <div className="h-8 w-32 bg-slate-200 animate-pulse rounded-2xl" />
+interface ILoading {
+    className?: string
+}
+
+export default function Loading({ className = ""}: ILoading) {
+    return <div className={`h-8 w-full bg-slate-200 animate-pulse rounded-2xl ${className}`} />
 }

@@ -23,17 +23,26 @@ export function formatPercentage(num: any, den: any): string {
 
 export function formatCountdown(round: any): string {
     if (round === undefined) return ""
-    const duration = (round as IRound).endTime.toNumber() * 1000 - Date.now()
-    // console.log(duration)
+    const endTime = (round as IRound).endTime.toNumber() * 1000
+    if (endTime < Date.now()) return "Ended"
+    const duration = endTime - Date.now()
     let options: HumanizerOptions = { round: true }
-    if (duration > 60*60*24*1000) {
-        options = { ...options, units: ["d"] }
-    } else if (duration > 60*60*1000) {
-        options = { ...options, units: ["h"] }
-    } else if (duration > 60*1000) {
-        options = { ...options, units: ["m"] }
-    } else {
+    if (duration < 60) {
         options = { ...options, units: ["s"] }
+    } else if (duration < 60*1000) {
+        options = { ...options, units: ["m"] }
+    } else if (duration < 60*60*1000) {
+        options = { ...options, units: ["h"] }
+    } else {
+        options = { ...options, units: ["d"] }
     }
     return humanizeDuration(duration, options)
+}
+
+export function formatStaked(num: any, den: any): string {
+    if (!(num instanceof BigNumber)) return ""
+    if (!(den instanceof BigNumber)) return ""
+    num = formatBalance(num)
+    den = formatBalance(den)
+    return `${num}/${den}`
 }

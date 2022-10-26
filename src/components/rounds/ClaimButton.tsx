@@ -3,7 +3,7 @@ import moment from "moment";
 import { FaArrowAltCircleDown } from "react-icons/fa"
 
 interface IClaimButton {
-    roundIndex: BigNumber
+    roundIndex: number
     endTime: BigNumber
 }
 

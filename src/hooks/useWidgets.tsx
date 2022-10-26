@@ -5,8 +5,6 @@ import ERC20 from "../abi/ERC20.json"
 
 export default function useWidgetData() {
 
-    // const [widgets, setWidgets] = useState<IWidget[]>([])
-
     const { contract, isLoading: isLoadingContract } = useContract(contractAddress, ERC20Staking.abi)
     const { data: tokenAddress, isLoading: isLoadingTokenAddress } = useContractRead(contract, "token");
     const { contract: token, isLoading: isLoadingToken } = useContract(tokenAddress, ERC20.abi)
@@ -16,20 +14,6 @@ export default function useWidgetData() {
     const { data: currentRoundIndex, isLoading: isLoadingCurrentRoundIndex } = useContractRead(contract, "currentRoundIndex")
     const { data: currentRound, isLoading: isLoadingCurrentRound } = useContractRead(contract, "rounds", currentRoundIndex)
 
-    // useEffect(() => {
-
-    //     console.log("currentRound", currentRound)
-
-    //     const widgets: IWidget[] = [
-    //         { heading: formatBalance(balance), subheading: "Tokens Staked", isLoading: isLoadingContract || isLoadingTokenAddress || isLoadingToken || isLoadingBalance },
-    //         { heading: formatPercentage(balance, totalSupply), subheading: "Circulating Supply", isLoading: isLoadingContract || isLoadingTokenAddress || isLoadingToken || isLoadingBalance || isLoadingTotalSupply },
-    //         { heading: `${formatBalance(depositedETH)} BNB`, subheading: "Rewards Deposited", isLoading: isLoadingContract || isLoadingDepositedETH },
-    //         { heading: formatDuration(currentRound), subheading: "Next Payout", isLoading: isLoadingContract || isLoadingCurrentRound },
-    //     ]
-    //     setWidgets(widgets)
-    // }, [contract, tokenAddress, token, balance, totalSupply, depositedETH, currentRound])
-
-    // return widgets
     return {
         contract, isLoadingContract,
         tokenAddress, isLoadingTokenAddress,
