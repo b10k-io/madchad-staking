@@ -7,12 +7,12 @@ export default function DepositButton() {
     let [isOpen, setIsOpen] = useState(false)
 
     function closeModal() {
-        console.log("closeModal")
+        
         setIsOpen(false)
     }
 
     function openModal() {
-        console.log("openModal")
+        
         setIsOpen(true)
     }
 
