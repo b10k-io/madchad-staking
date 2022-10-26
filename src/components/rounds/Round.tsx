@@ -4,7 +4,7 @@ import { contractAddress } from "../../constants";
 import Loading from "../layout/Loading";
 import ClaimButton from "./ClaimButton";
 import ERC20Staking from "../../abi/ERC20Staking.json"
-import { formatBalance, formatCountdown } from "../../support/formatters";
+import { formatBalance, formatCountdown, formatSimplePercent } from "../../support/formatters";
 import { useState, useEffect } from "react";
 
 export const tdClass = "p-2 text-sm text-slate-900 first:text-left text-right"
@@ -40,6 +40,7 @@ export default function Round({ index }: IRound) {
     const { data: ethAllocForRoundByAddress, isLoading: isLoadingEthAllocForRoundByAddress } = useContractRead(contract, "ethAllocForRoundByAddress", index, address);
     const { data: ethClaimedForRoundByAddress, isLoading: isLoadingEthClaimedForRoundByAddress } = useContractRead(contract, "ethClaimedForRoundByAddress", index, address);
     const { data: ethUnclaimedForRoundByAddress, isLoading: isLoadingEthUnclaimedForRoundByAddress } = useContractRead(contract, "ethUnclaimedForRoundByAddress", index, address);
+    const { data: weightedAverageForRoundByAddress, isLoading: isLoadingWeightedAverageForRoundByAddress } = useContractRead(contract, "weightedAverageForRoundByAddress", index, address);
 
     const [countdown, setCountdown] = useState<string>("")
 
@@ -68,9 +69,10 @@ export default function Round({ index }: IRound) {
                         </div>
                     </td>
                     <td className={tdClass} colSpan={2}>{formatBalance(round.amountAllocated)} BNB</td>
-                    <td className={tdClass} colSpan={2}>
-                        <div className="flex justify-end">
-                            {isLoadingEthAllocForRoundByAddress || !ethAllocForRoundByAddress ? <Loading className="w-6 h-2" /> : <>{formatBalance(ethAllocForRoundByAddress)} BNB</>}
+                    <td className={tdClass} colSpan={3}>
+                        <div className="flex justify-end items-center gap-2">
+                            {isLoadingEthAllocForRoundByAddress || !ethAllocForRoundByAddress ? <Loading className="w-6 h-2" /> : <div>{formatBalance(ethAllocForRoundByAddress)} BNB</div>}
+                            {isLoadingWeightedAverageForRoundByAddress || !weightedAverageForRoundByAddress ? <Loading className="w-6 h-2" /> : <div>({formatSimplePercent(weightedAverageForRoundByAddress)})</div>}
                         </div>
                     </td>
                     <td className={tdClass} colSpan={2}>

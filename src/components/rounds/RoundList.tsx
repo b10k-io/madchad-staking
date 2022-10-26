@@ -36,7 +36,7 @@ export default function RoundList() {
                                 <td className={tdClass} colSpan={3}>Countdown</td>
                                 <td className={tdClass} colSpan={2}>Staked</td>
                                 <td className={tdClass} colSpan={2}>Rewards</td>
-                                <td className={tdClass} colSpan={2}>Share</td>
+                                <td className={tdClass} colSpan={3}>Share</td>
                                 <td className={tdClass} colSpan={2}>Claimed</td>
                                 <td className={tdClass} colSpan={2}>Unclaimed</td>
                                 <td className={tdClass} colSpan={2}></td>

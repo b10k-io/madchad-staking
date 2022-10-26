@@ -59,3 +59,11 @@ export function formatDuration(nb: BigNumber): string {
     }
     return humanizeDuration(duration, options)
 }
+
+export function formatSimplePercent(percent: any): string {
+    if (!(percent instanceof BigNumber)) return ""
+    return Intl.NumberFormat('en-US', {
+        style: "percent",
+        maximumFractionDigits: 2
+    }).format(parseInt(ethers.utils.formatEther(percent))); 
+}
