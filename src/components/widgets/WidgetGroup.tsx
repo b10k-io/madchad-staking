@@ -17,7 +17,7 @@ export default function WidgetGroup() {
                 <BasicWidget heading={formatBalance(balance)} subheading="Tokens Staked" isLoading={isLoadingBalance} />
                 <BasicWidget heading={formatPercentage(balance, totalSupply)} subheading="Total Supply" isLoading={isLoadingBalance || isLoadingTotalSupply} />
                 <BasicWidget heading={`${formatBalance(depositedETH)} BNB`} subheading="Rewards Deposited" isLoading={isLoadingDepositedETH} />
-                <CountdownWidget round={currentRound} isLoading={isLoadingCurrentRound} subheading="Next Payout" />
+                <CountdownWidget round={currentRound} isLoading={isLoadingCurrentRound} subheading="Claim Active Round" />
             </div>
         </Container>
     )

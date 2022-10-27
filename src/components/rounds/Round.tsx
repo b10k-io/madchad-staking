@@ -7,20 +7,20 @@ import ERC20Staking from "../../abi/ERC20Staking.json"
 import { formatBalance, formatCountdown, formatSimplePercent } from "../../support/formatters";
 import { useState, useEffect } from "react";
 
-export const tdClass = "p-2 text-sm text-slate-900 first:text-left text-right"
+export const tdClass = "py-4 px-2 text-sm text-slate-900 first:text-left text-right"
 
 export function LoadingRow() {
     return (
         <tr>
-            <td className={tdClass} colSpan={1}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={3}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={3}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={3}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={2}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={2}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={2}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={2}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={2}><Loading className="h-2 my-3" /></td>
+            <td className={tdClass} colSpan={1}><Loading className="h-4" /></td>
+            <td className={tdClass} colSpan={3}><Loading className="h-4" /></td>
+            <td className={tdClass} colSpan={3}><Loading className="h-4" /></td>
+            <td className={tdClass} colSpan={3}><Loading className="h-4" /></td>
+            <td className={tdClass} colSpan={2}><Loading className="h-4" /></td>
+            <td className={tdClass} colSpan={2}><Loading className="h-4" /></td>
+            <td className={tdClass} colSpan={3}><Loading className="h-4" /></td>
+            <td className={tdClass} colSpan={2}><Loading className="h-4" /></td>
+            <td className={tdClass} colSpan={2}><Loading className="h-4" /></td>
             <td className={tdClass} colSpan={2}></td>
         </tr>
     )
@@ -58,8 +58,8 @@ export default function Round({ index }: IRound) {
             {!isLoadingRound && round ?
                 <tr>
                     <td className={tdClass} colSpan={1}>{index}</td>
-                    <td className={tdClass} colSpan={3}>{moment(round.startTime.toNumber() * 1000).format("MMM Do YYYY, h:mm")}</td>
-                    <td className={tdClass} colSpan={3}>{moment(round.endTime.toNumber() * 1000).format("MMM Do YYYY, h:mm")}</td>
+                    <td className={tdClass} colSpan={3}>{moment(round.startTime.toNumber() * 1000).format("MMM Do YYYY, HH:mm")}</td>
+                    <td className={tdClass} colSpan={3}>{moment(round.endTime.toNumber() * 1000).format("MMM Do YYYY, HH:mm")}</td>
                     <td className={tdClass} colSpan={3}>{countdown}</td>
                     <td className={tdClass} colSpan={2}>
                         <div className="flex gap-2 justify-end items-center">

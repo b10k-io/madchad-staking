@@ -5,13 +5,41 @@ import Container from "../layout/Container"
 import Round, { LoadingRow } from "./Round"
 import ERC20Staking from "../../abi/ERC20Staking.json"
 import { BigNumber } from "ethers"
+import Loading from "../layout/Loading"
+import { FaSpinner, FaTimes } from "react-icons/fa"
 
 const tdClass = "px-2 text-xs font-semibold uppercase text-slate-400 first:text-left text-right py-2 border-b"
+
+function LoadingRounds() {
+    return (
+        <tr>
+            <td colSpan={23} className="py-8">
+                <div className="flex flex-col items-center justify-center gap-4">
+                    <FaSpinner className="animate-spin h-6 w-6" />
+                    <p className="text-slate-400 text-sm font-semibold uppercase">Loading Rounds</p>
+                </div>
+            </td>
+        </tr>
+    )
+}
+
+function ZeroRounds() {
+    return (
+        <tr>
+            <td colSpan={23} className="py-8">
+                <div className="flex flex-col items-center justify-center gap-4">
+                    <FaTimes className="h-6 w-6 text-slate-400" />
+                    <p className="text-slate-400 text-sm font-semibold uppercase">No rounds have been scheduled</p>
+                </div>
+            </td>
+        </tr>
+    )
+}
 
 export default function RoundList() {
 
     const { contract } = useContract(contractAddress, ERC20Staking.abi)
-    const { data: nbRounds } = useContractRead(contract, "nbRounds");
+    const { data: nbRounds, isLoading } = useContractRead(contract, "nbRounds");
 
     const [indexArray, setIndexArray] = useState<number[]>([])
 
@@ -43,11 +71,9 @@ export default function RoundList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {indexArray.length > 0 ? indexArray?.map((index, key) => <Round index={index} key={key} />) : <>
-                                <LoadingRow />
-                                <LoadingRow />
-                                <LoadingRow />
-                            </>}
+                            { isLoading && <LoadingRounds />}
+                            { !isLoading && indexArray?.length <= 0 && <ZeroRounds />}
+                            { indexArray?.map((index, key) => <Round index={index} key={key} />) }
                         </tbody>
                     </table>
                 </div>

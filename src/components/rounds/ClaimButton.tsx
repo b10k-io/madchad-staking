@@ -17,6 +17,7 @@ export default function ClaimButton({ roundIndex, endTime }: IClaimButton) {
     const address = useAddress()
     const { contract } = useContract(contractAddress, ERC20Staking.abi)
     const { data: amountStakedForRoundByAddress, isLoading: isLoadingAmountStakedForRoundByAddress } = useContractRead(contract, "amountStakedForRoundByAddress", roundIndex, address);
+    const { data: ethUnclaimedForRoundByAddress, isLoading: isLoadingEthUnclaimedForRoundByAddress } = useContractRead(contract, "ethUnclaimedForRoundByAddress", roundIndex, address);
 
     let [isOpen, setIsOpen] = useState(false)
 
@@ -31,7 +32,13 @@ export default function ClaimButton({ roundIndex, endTime }: IClaimButton) {
 
     function isDisabled(): boolean {
         const beforeEndTime = moment().isBefore(endTime.toNumber() * 1000)
-        return beforeEndTime || isLoadingAmountStakedForRoundByAddress || !amountStakedForRoundByAddress || (amountStakedForRoundByAddress as BigNumber).eq(0)
+        return beforeEndTime || 
+            isLoadingAmountStakedForRoundByAddress || 
+            !amountStakedForRoundByAddress || 
+            (amountStakedForRoundByAddress as BigNumber).eq(0) ||
+            isLoadingEthUnclaimedForRoundByAddress ||
+            !ethUnclaimedForRoundByAddress ||
+            (ethUnclaimedForRoundByAddress as BigNumber).eq(0)
     }
 
     return (
