@@ -4,7 +4,7 @@ import { contractAddress } from "../../constants";
 import Loading from "../layout/Loading";
 import ClaimButton from "./ClaimButton";
 import ERC20Staking from "../../abi/ERC20Staking.json"
-import { formatBalance, formatCountdown, formatSimplePercent } from "../../support/formatters";
+import { formatBalance, formatCommify, formatCountdown, formatSimplePercent } from "../../support/formatters";
 import { useState, useEffect } from "react";
 
 export const tdClass = "py-4 px-2 text-sm text-slate-900 first:text-left text-right first:pl-0 last:pr-0"
@@ -61,16 +61,16 @@ export default function Round({ index }: IRound) {
                     <td className={tdClass} colSpan={3}>{moment(round.startTime.toNumber() * 1000).format("MMM Do YYYY, HH:mm")}</td>
                     <td className={tdClass} colSpan={3}>{moment(round.endTime.toNumber() * 1000).format("MMM Do YYYY, HH:mm")}</td>
                     <td className={tdClass} colSpan={3}>{countdown}</td>
-                    <td className={tdClass} colSpan={2}>
-                        <div className="flex gap-2 justify-end items-center">
-                            <div>{isLoadingAmountStakedForRoundByAddress ? <Loading className="h-2 w-6" /> : formatBalance(amountStakedForRoundByAddress)}</div>
+                    <td className={tdClass} colSpan={3}>
+                        <div className="flex justify-end items-center gap-1">
+                            <div>{isLoadingAmountStakedForRoundByAddress ? <Loading className="h-2 w-6" /> : formatCommify(amountStakedForRoundByAddress)}</div>
                             <div>/</div>
-                            <div>{isLoadingAmountStakedForRound ? <Loading className="h-2 w-6" /> : formatBalance(amountStakedForRound)}</div>
+                            <div>{isLoadingAmountStakedForRound ? <Loading className="h-2 w-6" /> : formatCommify(amountStakedForRound)}</div>
                         </div>
                     </td>
                     <td className={tdClass} colSpan={2}>{formatBalance(round.amountAllocated)} BNB</td>
                     <td className={tdClass} colSpan={3}>
-                        <div className="flex justify-end items-center gap-2">
+                        <div className="flex justify-end items-center gap-1">
                             {isLoadingEthAllocForRoundByAddress || !ethAllocForRoundByAddress ? <Loading className="w-6 h-2" /> : <div>{formatBalance(ethAllocForRoundByAddress)} BNB</div>}
                             {isLoadingWeightedAverageForRoundByAddress || !weightedAverageForRoundByAddress ? <Loading className="w-6 h-2" /> : <div>({formatSimplePercent(weightedAverageForRoundByAddress)})</div>}
                         </div>
