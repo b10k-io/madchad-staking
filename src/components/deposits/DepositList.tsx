@@ -8,8 +8,41 @@ import ERC20 from "../../abi/ERC20.json"
 import { BigNumber } from "ethers"
 import { contractAddress } from "../../constants"
 import { formatCommify } from "../../support/formatters"
+import { FaSpinner, FaTimes } from "react-icons/fa"
 
-const tdClass = "text-xs font-semibold uppercase text-slate-400 first:text-left text-right py-2 border-b"
+const tdClass = "text-xs font-semibold uppercase text-slate-400 first:text-left first:pl-0 text-right p-2 border-b"
+
+function LoadingDeposits() {
+    return (
+        <tr>
+            <td colSpan={23} className="py-8">
+                <div className="flex flex-col items-center justify-center gap-4">
+                    <FaSpinner className="animate-spin h-6 w-6" />
+                    <p className="text-slate-400 text-sm font-semibold uppercase">Loading Deposits</p>
+                </div>
+            </td>
+        </tr>
+    )
+}
+
+function ZeroDeposits() {
+
+    const address = useAddress()
+
+    return (
+        <tr>
+            <td colSpan={11} className="py-8">
+                <div className="flex flex-col items-center justify-center gap-4">
+                    <FaTimes className="h-6 w-6 text-slate-400" />
+                    <div className="text-slate-400 text-sm font-semibold uppercase flex flex-col items-center gap-2">
+                        <p>No deposits for address</p>
+                        <p>{address}</p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    )
+}
 
 export default function DepositList() {
 
@@ -17,7 +50,7 @@ export default function DepositList() {
     const { contract } = useContract(contractAddress, ERC20Staking.abi)
     const { data: tokenAddress } = useContractRead(contract, "token");
     const { contract: token } = useContract(tokenAddress, ERC20.abi)
-    const { data: depositIndexesByAddress } = useContractRead(contract, "depositIndexesByAddress", address);
+    const { data: depositIndexesByAddress, isLoading } = useContractRead(contract, "depositIndexesByAddress", address);
     const { data: deposited } = useContractRead(contract, "balanceOf", address);
     const { data: balanceOf } = useContractRead(token, "balanceOf", address);
 
@@ -47,7 +80,9 @@ export default function DepositList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {depositIndexesByAddress?.map((index: BigNumber, key: number) => <Deposit index={index.toNumber()} key={key} />)}
+                            {isLoading && <LoadingDeposits />}
+                            {!isLoading && depositIndexesByAddress?.length <= 0 && <ZeroDeposits />}
+                            {!isLoading && depositIndexesByAddress?.map((index: BigNumber, key: number) => <Deposit index={index.toNumber()} key={key} />)}
                         </tbody>
                     </table>
                 </div>

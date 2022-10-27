@@ -14,10 +14,10 @@ export default function WidgetGroup() {
     return (
         <Container>
             <div className={`grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8`}>
-                <BasicWidget heading={formatBalance(balance)} subheading="Tokens Staked" isLoading={isLoadingBalance} />
-                <BasicWidget heading={formatPercentage(balance, totalSupply)} subheading="Total Supply" isLoading={isLoadingBalance || isLoadingTotalSupply} />
+                <BasicWidget heading={formatBalance(balance)} subheading="Pooled Tokens" isLoading={isLoadingBalance} />
+                <BasicWidget heading={formatPercentage(balance, totalSupply)} subheading="Of Total Supply" isLoading={isLoadingBalance || isLoadingTotalSupply} />
                 <BasicWidget heading={`${formatBalance(depositedETH)} BNB`} subheading="Rewards Deposited" isLoading={isLoadingDepositedETH} />
-                <CountdownWidget round={currentRound} isLoading={isLoadingCurrentRound} subheading="Claim Active Round" />
+                <CountdownWidget round={currentRound} isLoading={isLoadingCurrentRound} subheading="Next Active Claim" />
             </div>
         </Container>
     )

@@ -14,11 +14,12 @@ export function formatPercentage(num: any, den: any): string {
     if (!(num instanceof BigNumber)) return ""
     if (!(den instanceof BigNumber)) return ""
 
-    const percent = num.div(den)
+    const percent = num.mul(100).div(den).toNumber() / 100
+
     return Intl.NumberFormat('en-US', {
         style: "percent",
         maximumFractionDigits: 2
-    }).format(parseInt(ethers.utils.formatEther(percent))); 
+    }).format(percent); 
 }
 
 export function formatCountdown(round: any): string {

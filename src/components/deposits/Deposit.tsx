@@ -7,7 +7,7 @@ import { contractAddress } from "../../constants";
 import { formatCommify } from "../../support/formatters";
 import Loading from "../layout/Loading";
 
-const tdClass = "p-2 text-sm text-slate-900 first:text-left text-right"
+const tdClass = "px-2 py-4 text-sm text-slate-900 text-right first:text-left first:pl-0 last:pr-0"
 
 interface IDeposit {
     index: number

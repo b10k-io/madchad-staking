@@ -57,7 +57,8 @@ export default function DepositForm() {
             <div className="flex flex-col gap-4 items-center text-center mb-8">
                 <h4 className="text-sm text-slate-400 uppercase">Step 1 of 2</h4>
                 <FaSpinner className="animate-spin h-6 w-6" />
-                <h3 className="font-semibold uppercase text-slate-900">Approve Token Spend: {formatBalance(amount)}</h3>
+                <h3 className="font-semibold uppercase text-slate-900">Approve Token Spend</h3>
+                <h4 className="font-semibold uppercase text-slate-900">{formatCommify(amount)}</h4>
                 <p className="text-slate-400">Confirm this transaction in your wallet</p>
             </div>
         )
@@ -80,7 +81,8 @@ export default function DepositForm() {
             <div className="flex flex-col gap-4 items-center text-center mb-8">
                 <h4 className="text-sm text-slate-400 uppercase">Step 2 of 2</h4>
                 <FaSpinner className="animate-spin h-6 w-6" />
-                <h3 className="font-semibold uppercase text-slate-900">Deposit Tokens: {formatBalance(amount)}</h3>
+                <h3 className="font-semibold uppercase text-slate-900">Deposit Tokens</h3>
+                <h4 className="font-semibold uppercase text-slate-900">{formatCommify(amount)}</h4>
                 <p className="text-slate-400">Confirm this transaction in your wallet</p>
             </div>
         )

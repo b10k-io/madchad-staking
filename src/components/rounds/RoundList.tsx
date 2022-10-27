@@ -8,7 +8,7 @@ import { BigNumber } from "ethers"
 import Loading from "../layout/Loading"
 import { FaSpinner, FaTimes } from "react-icons/fa"
 
-const tdClass = "px-2 text-xs font-semibold uppercase text-slate-400 first:text-left text-right py-2 border-b"
+const tdClass = "px-2 text-xs font-semibold uppercase text-slate-400 first:text-left first:pl-0 text-right py-2 border-b"
 
 function LoadingRounds() {
     return (
