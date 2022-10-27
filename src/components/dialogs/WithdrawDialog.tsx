@@ -1,14 +1,14 @@
 import { Dialog } from '@headlessui/react'
 import { IWithdrawDialog } from '../../types/dialogs'
 import DialogWrapper from './DialogWrapper'
-import { FaCheckCircle, FaSpinner, FaTimes } from "react-icons/fa"
+import { FaCheckCircle, FaSpinner, FaSync, FaTimes } from "react-icons/fa"
 import { FaArrowAltCircleDown } from "react-icons/fa"
 import { useContract, useContractRead, useContractWrite } from '@thirdweb-dev/react'
 import { contractAddress } from '../../constants'
 import ERC20Staking from "../../abi/ERC20Staking.json"
 import { useEffect, useState } from 'react'
-import { BigNumber, ethers } from 'ethers'
-import { formatBalance, formatCommify, formatDuration } from '../../support/formatters'
+import { BigNumber } from 'ethers'
+import { formatCommify, formatDuration } from '../../support/formatters'
 import { TransactionError } from '@thirdweb-dev/sdk'
 
 const tdClass = "text-sm text-right py-1 text-slate-900 border-slate-200"
@@ -39,7 +39,7 @@ function ErrorView({ error, withdraw }: { error: unknown, withdraw: () => void }
                 onClick={withdraw}
             >
                 <div className="flex items-center justify-center gap-2">
-                    <FaArrowAltCircleDown className="h-4" />
+                    <FaSync className="h-4" />
                     <span>Try again</span>
                 </div>
             </button>
@@ -102,7 +102,7 @@ export default function WithdrawDialog({ depositIndex, isOpen, openModal, closeM
                 {status === "idle" &&
                     <>
                         <div>
-                            {feeRate && feeRate && feeForDeposit && feeForDeposit > 0 && <div className='p-3 text-sm bg-amber-100 rounded border-0 border-amber-300 text-amber-900'>This deposit is less than {formatDuration(feeCliff)} days old and is therefore subject to a {feeRate.toNumber()}% early withdrawl fee.</div>}
+                            {feeRate && feeRate && feeForDeposit && feeForDeposit > 0 && <div className='p-3 text-sm bg-amber-100 rounded border-0 border-amber-300 text-amber-900'>This deposit is less than {formatDuration(feeCliff)} old and is therefore subject to a {feeRate.toNumber()}% early withdrawl fee.</div>}
                         </div>
 
                         <div>

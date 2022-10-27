@@ -105,7 +105,8 @@ export default function DepositForm() {
             <div className="flex flex-col gap-4 items-center text-center mb-8">
                 <h4 className="text-sm text-slate-400 uppercase">Congratulations</h4>
                 <FaCheckCircle className="text-emerald-500 h-6 w-6" />
-                <h3 className="font-semibold uppercase text-emerld-900">Deposited {formatBalance(amount)} Tokens</h3>
+                <h3 className="font-semibold uppercase text-emerld-900">Deposited Tokens</h3>
+                <h4 className="font-semibold uppercase text-slate-900">{formatCommify(amount)}</h4>
                 <p className="text-slate-400">View your deposit in the Deposits section.</p>
             </div>
         )
@@ -134,7 +135,7 @@ export default function DepositForm() {
             </button>
 
             { feeRate && feeCliff && maxFeeRate && maxFeeCliff &&
-                <p className="text-justify text-xs text-slate-600">By depositing tokens, you become eligable to receive BNB rewards. You may withdraw the deposit at anytime, but you will be charged a {feeRate.toNumber()}% fee if you withdraw within {formatDuration(feeCliff)} days of your deposit. The project reserves the right to adjust the rate and duration up to a maximum of {maxFeeRate.toNumber()}% and {formatDuration(maxFeeCliff)} days.</p>
+                <p className="text-justify text-xs text-slate-600">By depositing tokens, you become eligable to receive BNB rewards. You may withdraw the deposit at anytime, but you will be charged a {feeRate.toNumber()}% fee if you withdraw within {formatDuration(feeCliff)} of your deposit. The project reserves the right to adjust the rate and duration up to a maximum of {maxFeeRate.toNumber()}% and {formatDuration(maxFeeCliff)}.</p>
             }
 
         </form>

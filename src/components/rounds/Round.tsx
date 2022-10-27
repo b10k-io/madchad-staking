@@ -68,21 +68,21 @@ export default function Round({ index }: IRound) {
                             <div>{isLoadingAmountStakedForRound ? <Loading className="h-2 w-6" /> : formatCommify(amountStakedForRound)}</div>
                         </div>
                     </td>
-                    <td className={tdClass} colSpan={2}>{formatBalance(round.amountAllocated)} BNB</td>
+                    <td className={tdClass} colSpan={2}>{formatCommify(round.amountAllocated)} BNB</td>
                     <td className={tdClass} colSpan={3}>
                         <div className="flex justify-end items-center gap-1">
-                            {isLoadingEthAllocForRoundByAddress || !ethAllocForRoundByAddress ? <Loading className="w-6 h-2" /> : <div>{formatBalance(ethAllocForRoundByAddress)} BNB</div>}
+                            {isLoadingEthAllocForRoundByAddress || !ethAllocForRoundByAddress ? <Loading className="w-6 h-2" /> : <div>{formatCommify(ethAllocForRoundByAddress)} BNB</div>}
                             {isLoadingWeightedAverageForRoundByAddress || !weightedAverageForRoundByAddress ? <Loading className="w-6 h-2" /> : <div>({formatSimplePercent(weightedAverageForRoundByAddress)})</div>}
                         </div>
                     </td>
                     <td className={tdClass} colSpan={2}>
                         <div className="flex justify-end">
-                            {isLoadingEthClaimedForRoundByAddress || !ethClaimedForRoundByAddress ? <Loading className="w-6 h-2" /> : <>{formatBalance(ethClaimedForRoundByAddress)} BNB</>}
+                            {isLoadingEthClaimedForRoundByAddress || !ethClaimedForRoundByAddress ? <Loading className="w-6 h-2" /> : <>{formatCommify(ethClaimedForRoundByAddress)} BNB</>}
                         </div>
                     </td>
                     <td className={tdClass} colSpan={2}>
                         <div className="flex justify-end">
-                            {isLoadingEthUnclaimedForRoundByAddress || !ethUnclaimedForRoundByAddress ? <Loading className="w-6 h-2" /> : <>{formatBalance(ethUnclaimedForRoundByAddress)} BNB</>}
+                            {isLoadingEthUnclaimedForRoundByAddress || !ethUnclaimedForRoundByAddress ? <Loading className="w-6 h-2" /> : <>{formatCommify(ethUnclaimedForRoundByAddress)} BNB</>}
                         </div>
                     </td>
                     <td className={tdClass} colSpan={2}>

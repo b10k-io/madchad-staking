@@ -13,7 +13,7 @@ const tdClass = "px-2 text-xs font-semibold uppercase text-slate-400 first:text-
 function LoadingRounds() {
     return (
         <tr>
-            <td colSpan={23} className="py-8">
+            <td colSpan={24} className="py-8">
                 <div className="flex flex-col items-center justify-center gap-4">
                     <FaSpinner className="animate-spin h-6 w-6" />
                     <p className="text-slate-400 text-sm font-semibold uppercase">Loading Rounds</p>
@@ -26,7 +26,7 @@ function LoadingRounds() {
 function ZeroRounds() {
     return (
         <tr>
-            <td colSpan={23} className="py-8">
+            <td colSpan={24} className="py-8">
                 <div className="flex flex-col items-center justify-center gap-4">
                     <FaTimes className="h-6 w-6 text-slate-400" />
                     <p className="text-slate-400 text-sm font-semibold uppercase">No rounds have been scheduled</p>
