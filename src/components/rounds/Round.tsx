@@ -4,7 +4,7 @@ import { contractAddress } from "../../constants";
 import Loading from "../layout/Loading";
 import ClaimButton from "./ClaimButton";
 import ERC20Staking from "../../abi/ERC20Staking.json"
-import { formatBalance, formatCommify, formatCountdown, formatSimplePercent } from "../../support/formatters";
+import { formatCommify, formatCountdown, formatSimplePercent } from "../../support/formatters";
 import { useState, useEffect } from "react";
 
 export const tdClass = "py-4 px-2 text-sm text-slate-900 first:text-left text-right first:pl-0 last:pr-0"

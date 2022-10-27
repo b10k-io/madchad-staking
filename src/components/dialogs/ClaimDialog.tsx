@@ -1,14 +1,13 @@
 import { Dialog } from '@headlessui/react'
 import { IClaimDialog } from '../../types/dialogs'
 import DialogWrapper from './DialogWrapper'
-import { FaArrowAltCircleDown, FaCheckCircle, FaMoneyBill, FaSpinner, FaSync, FaTimes } from "react-icons/fa"
+import { FaArrowAltCircleDown, FaCheckCircle, FaSpinner, FaSync, FaTimes } from "react-icons/fa"
 import { TransactionError } from '@thirdweb-dev/sdk'
 import { BigNumber } from 'ethers'
 import { formatCommify } from '../../support/formatters'
 import { useAddress, useContract, useContractRead, useContractWrite } from '@thirdweb-dev/react'
 import { contractAddress } from '../../constants'
 import ERC20Staking from "../../abi/ERC20Staking.json"
-import { useEffect } from 'react'
 
 function DefaultView({ amount, claim }: { amount: BigNumber, claim: () => void }) {
     return (
@@ -96,10 +95,10 @@ export default function ClaimDialog({ roundIndex, isOpen, openModal, closeModal 
                 </div>
             </Dialog.Title>
             <div className="mt-8">
-                { status == "idle" && <DefaultView amount={ethUnclaimedForRoundByAddress} claim={claim} />}
-                { status == "loading" && <LoadingView amount={ethUnclaimedForRoundByAddress} />}
-                { status == "error" && <ErrorView error={error} claim={claim} />}
-                { status == "success" && <SuccessView amount={ethUnclaimedForRoundByAddress} />}
+                { status === "idle" && <DefaultView amount={ethUnclaimedForRoundByAddress} claim={claim} />}
+                { status === "loading" && <LoadingView amount={ethUnclaimedForRoundByAddress} />}
+                { status === "error" && <ErrorView error={error} claim={claim} />}
+                { status === "success" && <SuccessView amount={ethUnclaimedForRoundByAddress} />}
             </div>
         </DialogWrapper>
     )

@@ -1,4 +1,4 @@
-import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
+import { useContract, useContractRead } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
 import moment from "moment"
 import WithdrawButton from "./WithdrawButton";

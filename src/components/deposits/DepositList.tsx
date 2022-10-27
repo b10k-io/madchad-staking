@@ -1,6 +1,6 @@
 import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react"
 import Container from "../layout/Container"
-import Deposit, { LoadingDeposit } from "./Deposit"
+import Deposit from "./Deposit"
 import DepositButton from "./DepositButton"
 import WithdrawAllButton from "./WithdrawAllButton"
 import ERC20Staking from "../../abi/ERC20Staking.json"

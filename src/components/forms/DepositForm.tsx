@@ -7,9 +7,8 @@ import ERC20Staking from "../../abi/ERC20Staking.json"
 import ERC20 from "../../abi/ERC20.json"
 import { FaSpinner } from "react-icons/fa"
 import { TransactionError } from "@thirdweb-dev/sdk";
-import SanitizedHTML from 'react-sanitized-html';
 import { useEffect, useState } from "react";
-import { formatBalance, formatCommify, formatCountdown, formatDuration } from "../../support/formatters";
+import { formatCommify, formatDuration } from "../../support/formatters";
 
 type Inputs = {
     amount: string,
