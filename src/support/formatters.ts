@@ -43,7 +43,10 @@ export function formatCountdown(round: any): string {
 export function formatCommify(nb: any): string {
     if (!(nb instanceof BigNumber)) return ""
     nb = ethers.utils.formatEther(nb)
-    return ethers.utils.commify(nb)
+    const str = ethers.utils.commify(nb)
+    const index = str.indexOf(".") + 4
+    return str.substring(0, index)
+    // return str
 }
 
 export function formatDuration(nb: BigNumber): string {
@@ -66,5 +69,5 @@ export function formatSimplePercent(percent: any): string {
     return Intl.NumberFormat('en-US', {
         style: "percent",
         maximumFractionDigits: 2
-    }).format(parseInt(ethers.utils.formatEther(percent))); 
+    }).format(parseFloat(ethers.utils.formatEther(percent))); 
 }
