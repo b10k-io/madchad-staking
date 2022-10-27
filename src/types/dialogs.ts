@@ -15,3 +15,7 @@ export interface IDepositDialog extends IDialog {
 export interface IClaimDialog extends IDialog {
     roundIndex: number
 }
+
+export interface IWithdrawDialog extends IDialog {
+    depositIndex: number
+}

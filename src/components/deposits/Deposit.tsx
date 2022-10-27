@@ -30,7 +30,6 @@ export default function Deposit({ index }: IDeposit) {
     const { contract } = useContract(contractAddress, ERC20Staking.abi)
     const { data: deposit } = useContractRead(contract, "deposits", index)
 
-
     return (
         <>
             {deposit ?
@@ -40,7 +39,7 @@ export default function Deposit({ index }: IDeposit) {
                     <td className={tdClass} colSpan={3}>{!deposit.withdrawlTime.eq(ethers.constants.MaxUint256) && moment(deposit.withdrawlTime.toNumber() * 1000).format("MMM Do YYYY, h:mm")}</td>
                     <td className={tdClass} colSpan={2}>{formatCommify(deposit.amount)}</td>
                     <td className={tdClass} colSpan={2}>
-                        <WithdrawButton />
+                        <WithdrawButton depositIndex={index} />
                     </td>
                 </tr> : <LoadingDeposit />}
         </>
