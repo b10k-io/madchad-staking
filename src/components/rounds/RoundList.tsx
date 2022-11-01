@@ -56,7 +56,7 @@ export default function RoundList() {
                     <h2 className="text-xl text-slate-900 font-bold uppercase">Rounds</h2>
                     <table className="w-full table-fixed">
                         <thead>
-                            <tr>
+                            <tr className="hidden lg:table-row">
                                 <td className={tdClass} colSpan={1}>#</td>
                                 <td className={tdClass} colSpan={3}>Start Time</td>
                                 <td className={tdClass} colSpan={3}>End Time</td>
@@ -67,6 +67,9 @@ export default function RoundList() {
                                 <td className={tdClass} colSpan={2}>Claimed</td>
                                 <td className={tdClass} colSpan={2}>Unclaimed</td>
                                 <td className={tdClass} colSpan={2}></td>
+                            </tr>
+                            <tr className="lg:hidden">
+
                             </tr>
                         </thead>
                         <tbody>
