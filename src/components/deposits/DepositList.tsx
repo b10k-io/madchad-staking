@@ -76,7 +76,7 @@ export default function DepositList() {
                     <div className="flex justify-between items-center">
                         <h2 className="text-xl text-slate-900 font-bold uppercase">Deposits</h2>
                         <div className="flex items-center gap-2">
-                            <div className="flex divide-x divide-solid">
+                            <div className="flex divide-x divide-solid hidden lg:flex">
                                 <span className="px-2 text-xs uppercase font-semibold text-slate-400">Balance: {formatCommify(balanceOf)}</span>
                                 <span className="px-2 text-xs uppercase font-semibold text-slate-400">Deposited: {formatCommify(deposited)}</span>
                             </div>
@@ -84,9 +84,13 @@ export default function DepositList() {
                             <WithdrawAllButton />
                         </div>
                     </div>
+                    <div className="divide-x divide-solid lg:hidden flex">
+                        <span className="pr-2 text-xs uppercase font-semibold text-slate-400">Balance: {formatCommify(balanceOf)}</span>
+                        <span className="pl-2 text-xs uppercase font-semibold text-slate-400">Deposited: {formatCommify(deposited)}</span>
+                    </div>
                     <table className="w-full table-fixed">
                         <thead>
-                            <tr>
+                            <tr className="hidden lg:table-row">
                                 <td className={tdClass} colSpan={1}>#</td>
                                 <td className={tdClass} colSpan={3}>Deposit Time</td>
                                 <td className={tdClass} colSpan={3}>Withdrawl Time</td>

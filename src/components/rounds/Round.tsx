@@ -64,7 +64,6 @@ export function LoadingRow() {
                     </div>
                     <div className="flex justify-between items-center">
                         <span></span>
-                        <span></span>
                     </div>
                 </td>
             </tr>

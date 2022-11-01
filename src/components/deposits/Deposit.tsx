@@ -15,13 +15,38 @@ interface IDeposit {
 
 export function LoadingDeposit() {
     return (
-        <tr>
-            <td className={tdClass} colSpan={1}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={3}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={3}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={2}><Loading className="h-2 my-3" /></td>
-            <td className={tdClass} colSpan={2}></td>
-        </tr>
+        <>
+            <tr className="hidden lg:table-row">
+                <td className={tdClass} colSpan={1}><Loading className="h-2 my-3" /></td>
+                <td className={tdClass} colSpan={3}><Loading className="h-2 my-3" /></td>
+                <td className={tdClass} colSpan={3}><Loading className="h-2 my-3" /></td>
+                <td className={tdClass} colSpan={2}><Loading className="h-2 my-3" /></td>
+                <td className={tdClass} colSpan={2}></td>
+            </tr>
+            <tr className="lg:hidden border-b border-b-slate-500 text-sm">
+                <td className="flex flex-col gap-2 text-">
+                    <div className="flex justify-between items-center">
+                        <span>Deposit</span>
+                        <span><Loading className="h-4" /></span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                        <span>Deposit Time</span>
+                        <span><Loading className="h-4" /></span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                        <span>Withdrawl Time</span>
+                        <span><Loading className="h-4" /></span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                        <span>Amount</span>
+                        <span><Loading className="h-4" /></span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                        <span></span>
+                    </div>
+                </td>
+            </tr>
+        </>
     )
 }
 
@@ -33,15 +58,41 @@ export default function Deposit({ index }: IDeposit) {
     return (
         <>
             {deposit ?
-                <tr>
-                    <td className={tdClass} colSpan={1}>{index}</td>
-                    <td className={tdClass} colSpan={3}>{moment(deposit.depositTime.toNumber() * 1000).format("MMM Do YYYY, h:mm")}</td>
-                    <td className={tdClass} colSpan={3}>{!deposit.withdrawlTime.eq(ethers.constants.MaxUint256) && moment(deposit.withdrawlTime.toNumber() * 1000).format("MMM Do YYYY, h:mm")}</td>
-                    <td className={tdClass} colSpan={2}>{formatCommify(deposit.amount)}</td>
-                    <td className={tdClass} colSpan={2}>
-                        <WithdrawButton depositIndex={index} />
-                    </td>
-                </tr> : <LoadingDeposit />}
+                <>
+                    <tr className="hidden lg:table-row">
+                        <td className={tdClass} colSpan={1}>{index}</td>
+                        <td className={tdClass} colSpan={3}>{moment(deposit.depositTime.toNumber() * 1000).format("MMM Do YYYY, h:mm")}</td>
+                        <td className={tdClass} colSpan={3}>{!deposit.withdrawlTime.eq(ethers.constants.MaxUint256) && moment(deposit.withdrawlTime.toNumber() * 1000).format("MMM Do YYYY, h:mm")}</td>
+                        <td className={tdClass} colSpan={2}>{formatCommify(deposit.amount)}</td>
+                        <td className={tdClass} colSpan={2}>
+                            <WithdrawButton depositIndex={index} />
+                        </td>
+                    </tr>
+                    <tr className="lg:hidden border-b border-b-slate-500 text-sm">
+                        <td className="py-2 flex flex-col gap-2 text-">
+                            <div className="flex justify-between items-center">
+                                <span>Deposit</span>
+                                <span>{index}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span>Deposit Time</span>
+                                <span>{moment(deposit.depositTime.toNumber() * 1000).format("MMM Do YYYY, h:mm")}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span>Withdrawl Time</span>
+                                <span>{!deposit.withdrawlTime.eq(ethers.constants.MaxUint256) && moment(deposit.withdrawlTime.toNumber() * 1000).format("MMM Do YYYY, h:mm")}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span>Amount</span>
+                                <span>{formatCommify(deposit.amount)}</span>
+                            </div>
+                            <div className="flex justify-end items-center">
+                                <WithdrawButton depositIndex={index} />
+                            </div>
+                        </td>
+                    </tr>
+                </>
+                : <LoadingDeposit />}
         </>
     )
 }

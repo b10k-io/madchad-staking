@@ -68,9 +68,6 @@ export default function RoundList() {
                                 <td className={tdClass} colSpan={2}>Unclaimed</td>
                                 <td className={tdClass} colSpan={2}></td>
                             </tr>
-                            <tr className="lg:hidden">
-
-                            </tr>
                         </thead>
                         <tbody>
                             { isLoading && <LoadingRounds />}
