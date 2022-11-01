@@ -2,7 +2,7 @@
   "name": "madchad-staking",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://b10k-io.github.io./madchad-staking/",
+  "homepage": "https://stake.madchad.io",
   "dependencies": {
     "@headlessui/react": "^1.7.3",
     "@testing-library/jest-dom": "^5.16.4",
