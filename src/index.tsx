@@ -6,7 +6,8 @@ import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import "./styles/globals.css";
 
 // This is the chainId your dApp will work on.
-const activeChainId = ChainId.BinanceSmartChainTestnet;
+// const activeChainId = ChainId.BinanceSmartChainTestnet;
+const activeChainId = ChainId.BinanceSmartChainMainnet;
 
 const container = document.getElementById("root");
 const root = createRoot(container!);
@@ -14,7 +15,7 @@ root.render(
   <React.StrictMode>
     <ThirdwebProvider
       desiredChainId={activeChainId}
-      chainRpc={{ [ChainId.BinanceSmartChainTestnet]: "https://data-seed-prebsc-1-s1.binance.org:8545/" }}
+      // chainRpc={{ [ChainId.BinanceSmartChainTestnet]: "https://data-seed-prebsc-1-s1.binance.org:8545/" }}
     >
       <App />
     </ThirdwebProvider>
