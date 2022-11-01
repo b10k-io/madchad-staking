@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/madchad-staking/static/css/main.5aa34cbf.css",
-    "main.js": "/madchad-staking/static/js/main.13c6934e.js",
+    "main.js": "/madchad-staking/static/js/main.8267ae70.js",
     "static/js/180.2da04b6e.chunk.js": "/madchad-staking/static/js/180.2da04b6e.chunk.js",
     "static/js/44.edc76229.chunk.js": "/madchad-staking/static/js/44.edc76229.chunk.js",
     "static/js/391.f63a0419.chunk.js": "/madchad-staking/static/js/391.f63a0419.chunk.js",
@@ -31,7 +31,7 @@
     "static/media/logo.png": "/madchad-staking/static/media/logo.45e5efae57b6be9e6ed5.png",
     "index.html": "/madchad-staking/index.html",
     "main.5aa34cbf.css.map": "/madchad-staking/static/css/main.5aa34cbf.css.map",
-    "main.13c6934e.js.map": "/madchad-staking/static/js/main.13c6934e.js.map",
+    "main.8267ae70.js.map": "/madchad-staking/static/js/main.8267ae70.js.map",
     "180.2da04b6e.chunk.js.map": "/madchad-staking/static/js/180.2da04b6e.chunk.js.map",
     "391.f63a0419.chunk.js.map": "/madchad-staking/static/js/391.f63a0419.chunk.js.map",
     "509.bbebb61a.chunk.js.map": "/madchad-staking/static/js/509.bbebb61a.chunk.js.map",
@@ -49,6 +49,6 @@
   },
   "entrypoints": [
     "static/css/main.5aa34cbf.css",
-    "static/js/main.13c6934e.js"
+    "static/js/main.8267ae70.js"
   ]
 }
